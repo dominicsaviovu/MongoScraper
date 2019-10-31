@@ -17,12 +17,12 @@ $.getJSON("/api/saved", function(data) {
     }
   });
 
-  $(document).on("click", "#saveArticle", function() {
-    $.get("/saved/:id");
-      var thisId =$(this).attr("data-id");
-      $.ajax({
-        method: "POST",
-        url: "/saved" + thisId,
+$(document).on("click", "#saveArticle", function() {
+  var thisId =$(this).parents("#newArticle").attr("data-id");
+  alert (thisId)    
+  $.ajax({
+        method: "PUT",
+        url: "/saved/" + thisId,
         data: {
           title: $("#savedArticleTitle"),
           link: $("#savedLink")

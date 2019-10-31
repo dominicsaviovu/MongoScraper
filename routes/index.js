@@ -44,7 +44,7 @@ router.get("/scrape", function (req, res) {
   //   console.log(res);
   // });
   //   });
-  axios.get("http://www.echojs.com/").then(function (response) {
+  axios.get("http://www.nytimes.com/").then(function (response) {
 
     var $ = cheerio.load(response.data);
     $("article h2").each(function (i, element) {
@@ -52,11 +52,12 @@ router.get("/scrape", function (req, res) {
       var result = {};
 
       result.title = $(this)
-        .children("a")
+        //.children("a")
         .text();
       result.link = $(this)
-        .children("a")
+        .parents("a")
         .attr("href");
+        console.log(result);
 
       db.Article.create(result)
         .then(function (dbArticle) {
@@ -70,7 +71,7 @@ router.get("/scrape", function (req, res) {
     });
 
    res.send("scrape complete");
-    console.log(result);
+  
   });
 });
 
@@ -98,6 +99,15 @@ router.get("/saved/:id", function (req, res) {
     });
 });
 
-
+router.put("/saved/:id", function(req,res) {
+console.log ("hitting");
+  db.Article.update({_id: req.params.id},{saved:true})
+  .then(function (dbArticle){
+    res.json(dbArticle);
+  })
+  .catch(function (err){
+    res.json(err);
+  })
+});
 
 module.exports = router;

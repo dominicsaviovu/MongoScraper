@@ -1,5 +1,5 @@
 {
-  "name": "MongoScraper",
+  "name": "mongoscraper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/dominicsaviovu/MongoScraper#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "mongodb": "^3.3.3",
     "mongoose": "^5.5.2"
   },
   "devDependencies": {}
