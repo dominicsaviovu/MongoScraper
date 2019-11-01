@@ -18,8 +18,7 @@ $.getJSON("/api/saved", function(data) {
   });
 
 $(document).on("click", "#saveArticle", function() {
-  var thisId =$(this).parents("#newArticle").attr("data-id");
-  alert (thisId)    
+  var thisId =$(this).parents("#newArticle").attr("data-id");    
   $.ajax({
         method: "PUT",
         url: "/saved/" + thisId,

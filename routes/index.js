@@ -76,7 +76,7 @@ router.get("/scrape", function (req, res) {
 });
 
 router.get("/api/saved", function (req, res) {
-  console.log("hi");
+  //console.log("hi");
   db.Article.find({})
     .then(function (data) {
       res.json(data);
